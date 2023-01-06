@@ -2,5 +2,4 @@
 
 echo "Running apt update"
 apt-get update -y
-echo "Installing nginx"
-apt-get install nginx -y
+echo "toto" >> toto.txt
