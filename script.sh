@@ -2,21 +2,21 @@
 
 cd /home/gradesadmin
 
-sudo apt-get install ansible -y
+apt-get install ansible -y
 
-FILE=/root/ansible
-if [ -f "$FILE" ]; then
-    echo "$FILE exists."
+FOLDER=/root/ansible
+if [ -d "$FOLDER" ]; then
+    echo "$FOLDER exists."
 else 
     sudo mkdir /root/ansible
 fi
 
-sudo echo -e "[defaults]\ninventory=/root/ansible/inventory\nremote_user=root\nhost_key_checking=False\nbecome=True\nbecome_user=root\nbecome_ask_pass=False\n" >> /root/ansible/ansible.cfg
+echo -e "[defaults]\ninventory=/root/ansible/inventory\nremote_user=root\nhost_key_checking=False\nbecome=True\nbecome_user=root\nbecome_ask_pass=False\n" >> /root/ansible/ansible.cfg
 
-sudo echo -e "[apache]\n192.168.0.100\n[mariadb]\n192.168.0.101" >> /root/ansible/inventory
+echo -e "[apache]\n192.168.0.100\n[mariadb]\n192.168.0.101" >> /root/ansible/inventory
 
 export ANSIBLE_CONFIG=/root/ansible/ansible.cfg
 
-sudo echo "export ANSIBLE_CONFIG=/root/ansible/ansible.cfg" >> ~/.profile
+echo "export ANSIBLE_CONFIG=/root/ansible/ansible.cfg" >> ~/.profile
 
 source ~/.profile
