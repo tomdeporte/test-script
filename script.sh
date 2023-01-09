@@ -4,7 +4,12 @@ cd /home/gradesadmin
 
 sudo apt-get install ansible -y
 
-sudo mkdir /root/ansible
+FILE=/root/ansible
+if [ -f "$FILE" ]; then
+    echo "$FILE exists."
+else 
+    sudo mkdir /root/ansible
+fi
 
 sudo echo -e "[defaults]\ninventory=/root/ansible/inventory\nremote_user=root\nhost_key_checking=False\nbecome=True\nbecome_user=root\nbecome_ask_pass=False\n" >> /root/ansible/ansible.cfg
 
